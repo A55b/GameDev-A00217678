@@ -2,46 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class idleBehaviour : StateMachineBehaviour {
+public class AttackState : StateMachineBehaviour {
     private Vector3 playerPos;
-    float MobDistanceRun = 4.0f;
     float MobDistanceAttack = 1.5f;
-
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-        Debug.Log("Idle");
-        playerPos = GameObject.FindGameObjectWithTag("Player").transform.position;
-	}
+        Debug.Log("Attack");
+        //playerPos = GameObject.FindGameObjectWithTag("Player").transform.position;
+    }
 
 	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
 	override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
         playerPos = GameObject.FindGameObjectWithTag("Player").transform.position;
         float distance = Vector3.Distance(animator.transform.position, playerPos);
-        //Debug.Log(distance);
-        if (distance < MobDistanceRun)
+        Debug.Log(distance);
+        if (distance > MobDistanceAttack)
         {
-
-            //Debug.Log("Idle");
-            animator.SetBool("isFollowing", true);
-            //Vector3 dirToPlayer = transform.position - Player.transform.position;
-            //Vector3 NewPos = transform.position - dirToPlayer;
-            //mob.SetDestination(NewPos);
-        }
-
-        if (distance < MobDistanceAttack)
-        {
-            //Debug.Log("Attack");
-            animator.SetBool("MobAttack", true);
-            //Vector3 dirToPlayer = transform.position - Player.transform.position;
-            //Vector3 NewPos = transform.position - dirToPlayer;
-            //mob.SetDestination(NewPos);
+            
+            animator.SetBool("MobAttack", false);
         }
     }
 
 	// OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-	//override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-	//
-	//}
+	override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
+	
+	}
 
 	// OnStateMove is called right after Animator.OnAnimatorMove(). Code that processes and affects root motion should be implemented here
 	//override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {

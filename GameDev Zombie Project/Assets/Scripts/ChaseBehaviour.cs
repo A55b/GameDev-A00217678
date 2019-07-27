@@ -7,8 +7,9 @@ public class ChaseBehaviour : StateMachineBehaviour
 {
     private GameObject Nav;
     private GameObject player;
-    public float MobDistanceRun = 4.0f;
-    public float Speed = 1.0f;
+    float MobDistanceRun = 4.0f;
+    float MobDistanceAttack = 1.5f;
+    float Speed = 1.0f;
     private NavMeshAgent mob;
     //OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -16,6 +17,7 @@ public class ChaseBehaviour : StateMachineBehaviour
         Debug.Log("chase");
         player = GameObject.FindGameObjectWithTag("Player");
         mob = animator.transform.root.GetComponent<NavMeshAgent>();
+        mob.isStopped = false;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -23,14 +25,30 @@ public class ChaseBehaviour : StateMachineBehaviour
     {
         Vector3 dirToPlayer = animator.transform.position - player.transform.position;
         Vector3 NewPos = animator.transform.position - dirToPlayer;
-        mob.SetDestination(NewPos);
+        
         //animator.transform.position = Vector3.MoveTowards(animator.transform.position, player.transform.position, Speed * Time.deltaTime);
         float distance = Vector3.Distance(animator.transform.position, player.transform.position);
+        mob.SetDestination(NewPos);
+        //Debug.Log(distance);
         if (distance > MobDistanceRun)
         {
+            mob.velocity = Vector3.zero;
+            mob.isStopped=true;
             animator.SetBool("isFollowing", false);
           
         }
+
+        if (distance < MobDistanceAttack)
+        {
+            Debug.Log("Attackif");
+            mob.velocity = Vector3.zero;
+            mob.isStopped = true;
+            animator.SetBool("MobAttack", true);
+            //Vector3 dirToPlayer = transform.position - Player.transform.position;
+            //Vector3 NewPos = transform.position - dirToPlayer;
+            //mob.SetDestination(NewPos);
+        }
+        
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
