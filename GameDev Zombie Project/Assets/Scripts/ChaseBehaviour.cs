@@ -7,8 +7,8 @@ public class ChaseBehaviour : StateMachineBehaviour
 {
     private GameObject Nav;
     private GameObject player;
-    float MobDistanceRun = 4.0f;
-    float MobDistanceAttack = 1.5f;
+    float MobDistanceRun = 40.0f;
+    float MobDistanceAttack = 2.0f;
     float Speed = 1.0f;
     private NavMeshAgent mob;
     //OnStateEnter is called when a transition starts and the state machine starts to evaluate this state

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AttackState : StateMachineBehaviour {
     private Vector3 playerPos;
-    float MobDistanceAttack = 1.5f;
+    float MobDistanceAttack = 2f;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
         Debug.Log("Attack");

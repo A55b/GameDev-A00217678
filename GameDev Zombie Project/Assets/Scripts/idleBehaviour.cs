@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class idleBehaviour : StateMachineBehaviour {
     private Vector3 playerPos;
-    float MobDistanceRun = 4.0f;
-    float MobDistanceAttack = 1.5f;
+    float MobDistanceRun = 40.0f;
+    float MobDistanceAttack = 2f;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {

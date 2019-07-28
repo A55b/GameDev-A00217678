@@ -7,6 +7,9 @@ public class ZombieHealth : MonoBehaviour
 {
     float health = 3;
     private ParticleSystem Blood;
+
+    bool deathtimer = false;
+    float timer = 0f;
     // Use this for initialization
     void Start()
     {
@@ -17,12 +20,19 @@ public class ZombieHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (deathtimer == true)
+        {
+            timer += Time.deltaTime;
+            if (timer >= 5.0f)
+            {
+                Destroy(gameObject);
+            }
+        }
     }
 
     void OnTriggerEnter(Collider col)
     {
-        Debug.Log("Coll");
+        //Debug.Log("Coll");
         if (col.gameObject.tag == "Bullet")
         {
             Blood.Play();
@@ -33,6 +43,8 @@ public class ZombieHealth : MonoBehaviour
                 gameObject.GetComponent<BoxCollider>().enabled = false;
                 gameObject.GetComponent<NavMeshAgent>().enabled = false;
                 gameObject.GetComponent<Animator>().enabled = false;
+                deathtimer = true;
+                transform.gameObject.tag = "None";
             }
         }
     }
