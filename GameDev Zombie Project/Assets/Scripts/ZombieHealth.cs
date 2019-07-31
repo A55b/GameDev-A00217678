@@ -7,6 +7,7 @@ public class ZombieHealth : MonoBehaviour
 {
     float health = 3;
     private ParticleSystem Blood;
+    GameObject Enemys;
 
     bool deathtimer = false;
     float timer = 0f;
@@ -15,6 +16,7 @@ public class ZombieHealth : MonoBehaviour
     {
         Blood = GetComponent<ParticleSystem>();
         Blood.Stop();
+        Enemys = GameObject.Find("Enemys Remaining");
     }
 
     // Update is called once per frame
@@ -45,6 +47,7 @@ public class ZombieHealth : MonoBehaviour
                 gameObject.GetComponent<Animator>().enabled = false;
                 deathtimer = true;
                 transform.gameObject.tag = "None";
+                Enemys.GetComponent<EnemysRemaining>().EnemyAdjust();
             }
         }
     }

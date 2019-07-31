@@ -11,30 +11,68 @@ public class ZombieSpawner : MonoBehaviour {
 
     public GameObject ZombiePrefab;
 
-    public int Zombiecount;
+    GameObject wave;
+    GameObject Enemys;
+
+    public int ZombieCount;
     public int ZombiesToSpawn = 5;
+    public int WaveNo = 0;
+    //public int ZombiesAlive = 1;
 
+    float SpawnTimer = 5.0f;
     float timer = 0.0f;
-
+    
+    bool BetweenWave = true;
     // Use this for initialization
     void Start () {
-        Zombiecount = ZombiesToSpawn;
+        ZombieCount = ZombiesToSpawn;
+        wave = GameObject.Find("WAVE");
+        Enemys = GameObject.Find("Enemys Remaining");
+        
     }
 	
 	// Update is called once per frame
 	void Update () {
         timer += Time.deltaTime;
-
-        if (timer >= 5.0f)
+        if (BetweenWave)
         {
-            Spawn();
+            if (timer >= 10.0f)
+            {
+                Debug.Log("WaveStart");
+                BetweenWave = false;
+                timer = 0f;
+                wave.GetComponent<Wave>().WaveAdjust();
+                Enemys.GetComponent<EnemysRemaining>().EnemyStart(ZombieCount);
+            }
+        }
+
+        if (timer >= SpawnTimer && BetweenWave == false)
+        {
+            if(ZombieCount > 0)
+            {
+                Spawn();
+                timer = 0.0f;
+                ZombieCount--;
+            }
+            
+        }
+
+        if (ZombieCount == 0 && GameObject.FindGameObjectsWithTag("Zombie").Length == 0)
+        {
+            Debug.Log("WaveComplete");
+            WaveNo++;
+            wave.GetComponent<Wave>().WaveCountDown();
+            ZombiesToSpawn += 10;
+            ZombieCount = ZombiesToSpawn;
+            BetweenWave = true;
             timer = 0.0f;
+            SpawnTimer = SpawnTimer * .8f;
+            Enemys.GetComponent<EnemysRemaining>().EnemyInbound();
         }
     }
 
     void Spawn() {
         int SpawnPointIndex = Random.Range(1, 5);
-        Zombiecount++;
 
         Debug.Log(SpawnPointIndex);
         if (SpawnPointIndex == 1)
