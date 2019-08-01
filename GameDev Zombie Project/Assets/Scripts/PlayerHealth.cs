@@ -18,8 +18,9 @@ public class PlayerHealth : MonoBehaviour {
         
     }
 
-    void HealthAdjust()
+    public void HealthAdjust(int dmg)
     {
-        
+        Health -= dmg;
+        textObj.text = "HEALTH: " + Health;
     }
 }

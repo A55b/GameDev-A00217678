@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SimpleShoot : MonoBehaviour
 {
+    //[RequireComponent(typeof(AudioSource))]
 
     public GameObject bulletPrefab;
     public GameObject casingPrefab;
@@ -11,6 +12,8 @@ public class SimpleShoot : MonoBehaviour
     public Transform barrelLocation;
     public Transform casingExitLocation;
 
+    private AudioSource m_AudioSource;
+    public AudioClip Gunshot;
 
     public float shotPower = 100f;
 
@@ -18,6 +21,8 @@ public class SimpleShoot : MonoBehaviour
     {
         if (barrelLocation == null)
             barrelLocation = transform;
+
+        m_AudioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -35,12 +40,13 @@ public class SimpleShoot : MonoBehaviour
         // bullet.GetComponent<Rigidbody>().AddForce(barrelLocation.forward * shotPower);
 
         GameObject tempFlash;
-       Instantiate(bulletPrefab, barrelLocation.position, barrelLocation.rotation).GetComponent<Rigidbody>().AddForce(barrelLocation.forward * shotPower);
+        m_AudioSource.PlayOneShot(Gunshot);
+        Instantiate(bulletPrefab, barrelLocation.position, barrelLocation.rotation).GetComponent<Rigidbody>().AddForce(barrelLocation.forward * shotPower);
        tempFlash = Instantiate(muzzleFlashPrefab, barrelLocation.position, barrelLocation.rotation);
-
-       // Destroy(tempFlash, 0.5f);
-        //  Instantiate(casingPrefab, casingExitLocation.position, casingExitLocation.rotation).GetComponent<Rigidbody>().AddForce(casingExitLocation.right * 100f);
        
+        // Destroy(tempFlash, 0.5f);
+        //  Instantiate(casingPrefab, casingExitLocation.position, casingExitLocation.rotation).GetComponent<Rigidbody>().AddForce(casingExitLocation.right * 100f);
+
     }
 
     void CasingRelease()

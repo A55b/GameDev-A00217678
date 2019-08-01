@@ -1,12 +1,12 @@
 fileFormatVersion: 2
-guid: 38f764b63a33f2147a6a076076e27ce3
+guid: 7a38295b37e7be0459909b0a65ceecbb
 TextureImporter:
   fileIDToRecycleName: {}
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -32,26 +32,26 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: -1
-    aniso: -1
+    aniso: 4
     mipBias: -100
-    wrapU: -1
-    wrapV: -1
+    wrapU: 1
+    wrapV: 1
     wrapW: -1
-  nPOTScale: 1
+  nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 0
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 1
+  spriteBorder: {x: 172, y: 172, z: 173, w: 172}
+  spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
   alphaIsTransparency: 1
-  spriteTessellationDetail: -1
-  textureType: 0
+  spriteTessellationDetail: 1
+  textureType: 8
   textureShape: 1
   singleChannelComponent: 0
   maxTextureSizeSet: 0
@@ -60,7 +60,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 2
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 256
+    maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -71,7 +71,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
   - serializedVersion: 2
     buildTarget: Standalone
-    maxTextureSize: 256
+    maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -83,10 +83,62 @@ TextureImporter:
   spriteSheet:
     serializedVersion: 2
     sprites: []
-    outline: []
-    physicsShape: []
+    outline:
+    - - {x: 40, y: -6}
+      - {x: 40, y: 6}
+      - {x: 38, y: 8}
+      - {x: 9, y: 8}
+      - {x: 9, y: 36}
+      - {x: 6, y: 39}
+      - {x: -4, y: 39}
+      - {x: -8, y: 35}
+      - {x: -8, y: 8}
+      - {x: -38, y: 8}
+      - {x: -40, y: 6}
+      - {x: -39, y: -4}
+      - {x: -37, y: -9}
+      - {x: -8, y: -9}
+      - {x: -8, y: -38}
+      - {x: -6, y: -40}
+      - {x: 6, y: -40}
+      - {x: 9, y: -37}
+      - {x: 9, y: -9}
+      - {x: 36, y: -9}
+    physicsShape:
+    - - {x: 0, y: -9}
+      - {x: -3, y: -12}
+      - {x: -3, y: -32}
+      - {x: -1, y: -34}
+      - {x: 2, y: -34}
+      - {x: 4, y: -32}
+      - {x: 4, y: -12}
+      - {x: 1, y: -9}
+    - - {x: -31, y: 3}
+      - {x: -33, y: 1}
+      - {x: -33, y: -2}
+      - {x: -31, y: -4}
+      - {x: -10, y: -4}
+      - {x: -8, y: -2}
+      - {x: -8, y: 1}
+      - {x: -10, y: 3}
+    - - {x: 11, y: 3}
+      - {x: 9, y: 1}
+      - {x: 9, y: -2}
+      - {x: 11, y: -4}
+      - {x: 32, y: -4}
+      - {x: 34, y: -2}
+      - {x: 34, y: 1}
+      - {x: 32, y: 3}
+    - - {x: -1, y: 33}
+      - {x: -3, y: 31}
+      - {x: -3, y: 10}
+      - {x: -1, y: 8}
+      - {x: 2, y: 8}
+      - {x: 4, y: 10}
+      - {x: 4, y: 31}
+      - {x: 2, y: 33}
     bones: []
-    spriteID: 
+    spriteID: a6a62b4c4918dbe4f860c048132a32d9
     vertices: []
     indices: 
     edges: []

@@ -1,21 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class AttackState : StateMachineBehaviour {
     private Vector3 playerPos;
-    float MobDistanceAttack = 2f;
+    float MobDistanceAttack = 3f;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-        Debug.Log("Attack");
-        //playerPos = GameObject.FindGameObjectWithTag("Player").transform.position;
+        //Debug.Log("Attack");
     }
 
 	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
 	override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
         playerPos = GameObject.FindGameObjectWithTag("Player").transform.position;
+
+        playerPos.y = animator.transform.root.position.y;
+        animator.transform.root.LookAt(playerPos);
         float distance = Vector3.Distance(animator.transform.position, playerPos);
-        Debug.Log(distance);
+        //Debug.Log(distance);
         if (distance > MobDistanceAttack)
         {
             

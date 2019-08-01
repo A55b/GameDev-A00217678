@@ -38,7 +38,7 @@ public class ZombieSpawner : MonoBehaviour {
         {
             if (timer >= 10.0f)
             {
-                Debug.Log("WaveStart");
+                //Debug.Log("WaveStart");
                 BetweenWave = false;
                 timer = 0f;
                 wave.GetComponent<Wave>().WaveAdjust();

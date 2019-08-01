@@ -27,7 +27,7 @@ public class Wave : MonoBehaviour {
             timer -= Time.deltaTime;
             if (timer >= 0)
             {
-                Debug.Log(timer);
+                //Debug.Log(timer);
                 textObj.text = "NEXT WAVE: " + timer.ToString("#.0");
             }
             else

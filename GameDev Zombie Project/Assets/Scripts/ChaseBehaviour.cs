@@ -9,7 +9,7 @@ public class ChaseBehaviour : StateMachineBehaviour
     private GameObject player;
     float MobDistanceRun = 40.0f;
     float MobDistanceAttack = 2.0f;
-    float Speed = 1.0f;
+    //float Speed = 1.0f;
     private NavMeshAgent mob;
     //OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -18,6 +18,7 @@ public class ChaseBehaviour : StateMachineBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         mob = animator.transform.root.GetComponent<NavMeshAgent>();
         mob.isStopped = false;
+        mob.enabled = true;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -29,10 +30,9 @@ public class ChaseBehaviour : StateMachineBehaviour
         //animator.transform.position = Vector3.MoveTowards(animator.transform.position, player.transform.position, Speed * Time.deltaTime);
         float distance = Vector3.Distance(animator.transform.position, player.transform.position);
         mob.SetDestination(NewPos);
-        //Debug.Log(distance);
         if (distance > MobDistanceRun)
         {
-            mob.velocity = Vector3.zero;
+            //mob.velocity = Vector3.zero;
             mob.isStopped=true;
             animator.SetBool("isFollowing", false);
           
@@ -40,7 +40,7 @@ public class ChaseBehaviour : StateMachineBehaviour
 
         if (distance < MobDistanceAttack)
         {
-            Debug.Log("Attackif");
+            //Debug.Log("Attackif");
             mob.velocity = Vector3.zero;
             mob.isStopped = true;
             animator.SetBool("MobAttack", true);
@@ -54,7 +54,7 @@ public class ChaseBehaviour : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-
+        //mob.enabled = false;
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove(). Code that processes and affects root motion should be implemented here

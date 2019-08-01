@@ -293,7 +293,7 @@ ModelImporter:
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
-    motionNodeName: 
+    motionNodeName: <Root Transform>
     rigImportErrors: 
     rigImportWarnings: "Copied Avatar Rig Configuration mis-match. Bone length in
       copied configuration does not match position in animation file:\n\t'LeftToes'
@@ -342,7 +342,7 @@ ModelImporter:
       name: 2-attack_inversed_horizontal_right_hand
       takeName: Story clip export
       firstFrame: 0
-      lastFrame: 72
+      lastFrame: 71
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

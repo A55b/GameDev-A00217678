@@ -8,6 +8,8 @@ TagManager:
   - Bullet
   - Zombie
   - None
+  - Floor
+  - Zattack
   layers:
   - Default
   - TransparentFX
