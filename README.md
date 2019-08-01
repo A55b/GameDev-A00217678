@@ -34,11 +34,17 @@ As I was asked to make a zombie survival game for this project, I decided to tak
 ## SCRIPTS
 Short descriptions of some of the scripts used.
 Aim - Transitions the gun in front of the player so they can transition from using the crosshairs to the iron sights of the pistol for more accurate shooting.
+
 Zombie Health - Checks if the zombie has been damaged and keeps track of the enemy’s health. If the zombie is hit it generates a particle effect showing the player that they have hit the zombie. If the zombie’s health is 0 then the animator of the object will be turned off and the zombie will ragdoll. This also deletes the dead zombie. 
+
 Zombie spawner - randomly selects an area to spawn the zombie. Also controls the waves increasing the zombie count by 10 every wave. This script also initialises a 10 second cooldown between waves.
+
 Ammo Text / Enemy Remaining /Player health / Score / Wave - these scripts update the UI so players receive the relevant information they need.
+
 Remove bullet / Remove casings / Remove flash - These scripts came with the gun asset they had to be modified as the game objects they were generating were not being deleted cluttering the screen and hurting performance so i added a function to destroy each after a few seconds. I also added sound effects to the casings so they actually had an impact when they hit the ground.
-Simple shoot - Same as a above this script came with the gun asset and was attached to it. I had to add a gunshot sound effect to the script and I also increased the animation speed of the gun because it was linked to the fire rate and I wanted to have a faster fire rate.  
+
+Simple shoot - Same as a above this script came with the gun asset and was attached to it. I had to add a gunshot sound effect to the script and I also increased the animation speed of the gun because it was linked to the fire rate and I wanted to have a faster fire rate.
+
 First Person Controller - I removed the jumping and sprinting mechanics from the first person controller as they were not needed for this game.
 
 ## STATE MACHINES
