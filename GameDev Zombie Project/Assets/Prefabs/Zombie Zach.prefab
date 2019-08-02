@@ -481,7 +481,7 @@ GameObject:
   - component: {fileID: 199399053770307246}
   m_Layer: 0
   m_Name: Zombie Zach
-  m_TagString: Untagged
+  m_TagString: Zombie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1894,7 +1894,7 @@ MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1385556750779094}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -2279,6 +2279,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Hit: {fileID: 8300000, guid: b3d1098c280ebd14d856c8aea40e4e63, type: 3}
+  Thud: {fileID: 8300000, guid: f19115a5a1b4c7c40aad9c447087fab4, type: 3}
 --- !u!135 &135609468132753848
 SphereCollider:
   m_ObjectHideFlags: 1

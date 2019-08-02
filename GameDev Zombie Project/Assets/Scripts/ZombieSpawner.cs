@@ -17,6 +17,11 @@ public class ZombieSpawner : MonoBehaviour {
     public int ZombieCount;
     public int ZombiesToSpawn = 5;
     public int WaveNo = 0;
+    GameObject player;
+    GameObject Score;
+
+    private AudioSource m_AudioSource;
+    public AudioClip WaveAudio;
     //public int ZombiesAlive = 1;
 
     float SpawnTimer = 5.0f;
@@ -28,7 +33,10 @@ public class ZombieSpawner : MonoBehaviour {
         ZombieCount = ZombiesToSpawn;
         wave = GameObject.Find("WAVE");
         Enemys = GameObject.Find("Enemys Remaining");
-        
+        player = GameObject.FindGameObjectWithTag("Player");
+        Score = GameObject.Find("Score");
+        m_AudioSource = GetComponent<AudioSource>();
+
     }
 	
 	// Update is called once per frame
@@ -43,6 +51,7 @@ public class ZombieSpawner : MonoBehaviour {
                 timer = 0f;
                 wave.GetComponent<Wave>().WaveAdjust();
                 Enemys.GetComponent<EnemysRemaining>().EnemyStart(ZombieCount);
+                m_AudioSource.PlayOneShot(WaveAudio);
             }
         }
 
@@ -62,34 +71,68 @@ public class ZombieSpawner : MonoBehaviour {
             Debug.Log("WaveComplete");
             WaveNo++;
             wave.GetComponent<Wave>().WaveCountDown();
-            ZombiesToSpawn += 10;
+            ZombiesToSpawn = ZombiesToSpawn * 2;
             ZombieCount = ZombiesToSpawn;
             BetweenWave = true;
             timer = 0.0f;
-            SpawnTimer = SpawnTimer * .8f;
+            SpawnTimer = SpawnTimer * .5f;
+            Score.GetComponent<Score>().ScoreMultiply();
             Enemys.GetComponent<EnemysRemaining>().EnemyInbound();
         }
     }
 
     void Spawn() {
         int SpawnPointIndex = Random.Range(1, 5);
+        
 
         Debug.Log(SpawnPointIndex);
         if (SpawnPointIndex == 1)
         {
-            Instantiate(ZombiePrefab, SpawnPoint1.transform.position , SpawnPoint1.transform.rotation);
+            float distance = Vector3.Distance(SpawnPoint1.transform.position, player.transform.position);
+            if (distance >20)
+            {
+                Instantiate(ZombiePrefab, SpawnPoint1.transform.position, SpawnPoint1.transform.rotation);
+            }
+            else
+            {
+                Instantiate(ZombiePrefab, SpawnPoint4.transform.position, SpawnPoint4.transform.rotation);
+            }
         }
         if (SpawnPointIndex == 2)
         {
-            Instantiate(ZombiePrefab, SpawnPoint2.transform.position, SpawnPoint2.transform.rotation);
+            float distance = Vector3.Distance(SpawnPoint2.transform.position, player.transform.position);
+            if (distance > 20)
+            {
+                Instantiate(ZombiePrefab, SpawnPoint2.transform.position, SpawnPoint2.transform.rotation);
+            }
+            else
+            {
+                Instantiate(ZombiePrefab, SpawnPoint3.transform.position, SpawnPoint3.transform.rotation);
+            }
         }
         if (SpawnPointIndex == 3)
         {
-            Instantiate(ZombiePrefab, SpawnPoint3.transform.position, SpawnPoint3.transform.rotation);
+            float distance = Vector3.Distance(SpawnPoint3.transform.position, player.transform.position);
+            if (distance > 20)
+            {
+                Instantiate(ZombiePrefab, SpawnPoint3.transform.position, SpawnPoint3.transform.rotation);
+            }
+            else
+            {
+                Instantiate(ZombiePrefab, SpawnPoint2.transform.position, SpawnPoint2.transform.rotation);
+            }
         }
         if (SpawnPointIndex == 4)
         {
-            Instantiate(ZombiePrefab, SpawnPoint4.transform.position, SpawnPoint4.transform.rotation);
+            float distance = Vector3.Distance(SpawnPoint4.transform.position, player.transform.position);
+            if (distance > 20)
+            {
+                Instantiate(ZombiePrefab, SpawnPoint4.transform.position, SpawnPoint4.transform.rotation);
+            }
+            else
+            {
+                Instantiate(ZombiePrefab, SpawnPoint1.transform.position, SpawnPoint1.transform.rotation);
+            }
         }
     }
 }

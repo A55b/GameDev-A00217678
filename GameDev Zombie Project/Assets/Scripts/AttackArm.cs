@@ -20,13 +20,17 @@ public class AttackArm : MonoBehaviour {
         if (cooldown)
         {
             timer += Time.deltaTime;
-            if (timer >= 1f)
+            if (timer >= 1.8f)
             {
                 Soundtrigger.enabled = true;
                 cooldown = false;
             }
         }
-	}
+        else if (this.transform.root.GetComponent<Animator>().enabled == false)
+        {
+            Soundtrigger.enabled = false;
+        }
+    }
 
     void OnTriggerEnter(Collider col)
     {
@@ -35,6 +39,14 @@ public class AttackArm : MonoBehaviour {
         {
             m_AudioSource.PlayOneShot(Thud);
             m_AudioSource.PlayOneShot(Hit);
+            cooldown = true;
+            timer = 0;
+            Soundtrigger.enabled = false;
+        }
+
+        if (col.gameObject.tag == "PlayerDead")
+        {
+            m_AudioSource.PlayOneShot(Thud);
             cooldown = true;
             timer = 0;
             Soundtrigger.enabled = false;

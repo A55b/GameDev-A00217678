@@ -10,6 +10,14 @@ TagManager:
   - None
   - Floor
   - Zattack
+  - FinalScore
+  - EnemysRemaining
+  - Wave
+  - Score
+  - Cross
+  - Gun
+  - Restart
+  - PlayerDead
   layers:
   - Default
   - TransparentFX

@@ -8,6 +8,7 @@ public class ZombieHealth : MonoBehaviour
     float health = 3;
     private ParticleSystem Blood;
     GameObject Enemys;
+    GameObject Score;
 
     bool deathtimer = false;
     float timer = 0f;
@@ -17,6 +18,7 @@ public class ZombieHealth : MonoBehaviour
         Blood = GetComponent<ParticleSystem>();
         Blood.Stop();
         Enemys = GameObject.Find("Enemys Remaining");
+        Score = GameObject.Find("Score");
     }
 
     // Update is called once per frame
@@ -37,9 +39,11 @@ public class ZombieHealth : MonoBehaviour
         //Debug.Log("Coll");
         if (col.gameObject.tag == "Bullet")
         {
+            Object.Destroy(col.gameObject);
             Blood.Play();
             Debug.Log("Hit");
             health--;
+            Score.GetComponent<Score>().ScoreAdjustHit();
             if (health <= 0)
             {
                 gameObject.GetComponent<BoxCollider>().enabled = false;
@@ -48,6 +52,7 @@ public class ZombieHealth : MonoBehaviour
                 deathtimer = true;
                 transform.gameObject.tag = "None";
                 Enemys.GetComponent<EnemysRemaining>().EnemyAdjust();
+                Score.GetComponent<Score>().ScoreAdjustDeath();
             }
         }
     }

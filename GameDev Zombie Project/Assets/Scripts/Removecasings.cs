@@ -31,6 +31,16 @@ public class Removecasings : MonoBehaviour {
         Destroy(gameObject);
     }
 
+    void OnCollisionEnter(Collision collision)
+    {
+
+        if (collision.gameObject.tag == "Player")
+        {
+            Physics.IgnoreCollision(this.GetComponent<Collider>(), GameObject.FindGameObjectWithTag("Player").GetComponent<Collider>());
+        }
+
+
+    }
     void OnTriggerEnter(Collider col)
     {
         //Debug.Log("Coll");
@@ -56,7 +66,7 @@ public class Removecasings : MonoBehaviour {
             }
             else
             {
-                m_AudioSource.PlayOneShot(Casing1);
+                m_AudioSource.PlayOneShot(Casing2);
                 Soundtrigger.enabled = false;
             }
         }
